@@ -12,7 +12,7 @@ body
 	}
 
 
-#player1_name , #player2_name
+#Player1name , #Player2name
 {
 	display: inline-block;
 	margin-left: 20px;
@@ -33,4 +33,7 @@ border-top: 10px solid #AA4465;
 padding: 10px;
 float: none;
 text-align: left;
+}
+#Player1_score , #Player2_score {
+	font-size: 25px;
 }
