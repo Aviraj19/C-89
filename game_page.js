@@ -8,3 +8,27 @@ document.getElementById("Player1_score").innerHTML=Player1score;
 document.getElementById("Player2_score").innerHTML=Player2score;
 document.getElementById("Player_question").innerHTML="Question turn:"+Player1name;
 document.getElementById("Player_answer").innerHTML="Answer turn:"+Player2name;
+function send() {
+    get_word=document.getElementById("Word").value;
+    word= get_word.toLowerCase();
+    console.log(word);
+    char_1=word.charAt(1);
+    console.log(char_1);
+    position=Math.floor(word.length/2);
+    char_2=word.charAt(position);
+    console.log(char_2);
+    char_3=word.charAt(word.length-1);
+    console.log(char_3);
+    underline_1=word.replace(char_1,"_");
+    console.log(underline_1);
+    underline_2=underline_1.replace(char_2,"_");
+    console.log(underline_2);
+    underline_3=underline_2.replace(char_3,"_");
+    console.log(underline_3);
+    question_tag="<h4 id='word_display'>Q."+underline_3+"</h4>";
+    input_tag="<br>answer:<input id='input_check' type='text'>";
+    button_tag="<br> <br> <button class='btn btn-info' onclick='check()'>Check</button>";
+    row=question_tag+input_tag+button_tag;
+    document.getElementById("output").innerHTML=row;
+    document.getElementById("Word").value="";
+}
