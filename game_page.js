@@ -2,12 +2,12 @@ Player1name=localStorage.getItem("Player1key");
 Player2name=localStorage.getItem("Player2key");
 Player1score=0;
 Player2score=0;
-document.getElementById("Player1name").innerHTML=Player1name + ":";
-document.getElementById("Player2name").innerHTML=Player2name + ":";
-document.getElementById("Player1_score").innerHTML=Player1score;
-document.getElementById("Player2_score").innerHTML=Player2score;
-document.getElementById("Player_question").innerHTML="Question turn:"+Player1name;
-document.getElementById("Player_answer").innerHTML="Answer turn:"+Player2name;
+document.getElementById("Player1name").innerHTML=Player1name + " :";
+document.getElementById("Player2name").innerHTML=Player2name + " :";
+document.getElementById("Player1_score").innerHTML="\t"+Player1score;
+document.getElementById("Player2_score").innerHTML="\t"+Player2score;
+document.getElementById("Player_question").innerHTML="Question turn : "+Player1name;
+document.getElementById("Player_answer").innerHTML="Answer turn : "+Player2name;
 function send() {
     get_word=document.getElementById("Word").value;
     word= get_word.toLowerCase();
@@ -31,4 +31,37 @@ function send() {
     row=question_tag+input_tag+button_tag;
     document.getElementById("output").innerHTML=row;
     document.getElementById("Word").value="";
+}
+var question_turn="player1";
+var answer_turn="player2";
+function check() {
+    get_answer=document.getElementById("input_check").value;
+    answer=get_answer.toLowerCase();
+    if(answer==word) {
+        if(answer_turn=="player1") {
+            Player1score=Player1score+1;
+            document.getElementById("Player1_score").innerHTML=Player1score;
+        }
+        else{
+            Player2score=Player2score+1;
+            document.getElementById("Player2_score").innerHTML=Player2score;
+             }
+       }
+       if(question_turn=="player1") {
+        question_turn="player2";
+        document.getElementById("Player_question").innerHTML="Question turn: "+Player2name;
+    }
+        else {
+    question_turn="player1";
+    document.getElementById("Player_question").innerHTML="Question turn: "+Player1name;
+        }
+        if(answer_turn=="player2") {
+            answer_turn="player1";
+            document.getElementById("Player_answer").innerHTML="Answer turn: "+Player1name;
+        }
+            else {
+        answer_turn="player2";
+        document.getElementById("Player_answer").innerHTML="Answer turn: "+Player2name;
+            }
+            document.getElementById("output").innerHTML="";
 }
